@@ -1,8 +1,26 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ApolloClient from "apollo-boost";
+import gql from "graphql-tag";
+
+const client = new ApolloClient({
+    uri: "https://w5xlvm3vzz.lp.gql.zone/graphql"
+});
+
 
 class App extends Component {
+    componentDidMount() {
+        client.query({
+                query: gql`
+                  {
+                    rates(currency: "USD") {
+                      currency
+                    }
+                  }
+                `
+            }).then(result => console.log(result));
+    }
   render() {
     return (
       <div className="App">
