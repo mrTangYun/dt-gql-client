@@ -1,5 +1,5 @@
 import {
-    Form, Icon, Input, Button, Checkbox,
+    Form, Icon, Input, Button, Checkbox, message
 } from 'antd';
 import React, { Component } from 'react';
 import gql from "graphql-tag";
@@ -41,7 +41,7 @@ class NormalLoginForm extends Component {
                         variables: {userName, password}
                     });
                 } catch (e) {
-                    console.log('登陆失败');
+                    message.error('登陆失败');
                 }
             }
         });
