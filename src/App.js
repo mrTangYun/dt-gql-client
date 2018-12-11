@@ -9,10 +9,13 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { Spin } from 'antd';
 import LoginForm from './components/login';
 import Layout from './components/layout';
+import { BatchHttpLink } from "apollo-link-batch-http";
 
-const httpLink = createHttpLink({
-  uri: '/api',
-});
+
+const httpLink = new BatchHttpLink({ uri: "/api" });
+// const httpLink = createHttpLink({
+//   uri: '/api',
+// });
 
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
