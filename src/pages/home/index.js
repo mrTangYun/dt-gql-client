@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import { Spin, Select } from 'antd';
 import moment from 'moment';
 import echarts from 'echarts';
+import EchartRiver from './EchartRiver';
 
 const Option = Select.Option;
 
@@ -47,7 +48,7 @@ class EchartComponent extends React.Component {
         name: '涨跌幅',
         type: 'line',
         data: this.props.data.map(({ change }) => (change)),
-        smooth: true,
+        // smooth: true,
       }],
     });
   }
@@ -139,6 +140,7 @@ class PageComponent extends React.Component {
                         }
                 </Select>
                 <EchartComponentWithData ts_code={this.state.currentStock || stock_basic[0].ts_code} />
+                <EchartRiver />
               </div>
             );
           }}
